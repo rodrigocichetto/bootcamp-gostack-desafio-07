@@ -2,8 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import * as CartActions from '../../store/modules/cart/actions';
+import PropTypes from 'prop-types';
 
+import * as CartActions from '../../store/modules/cart/actions';
 import { formatPrice } from '../../util/format';
 import colors from '../../styles/colors';
 
@@ -101,6 +102,13 @@ function Cart({ products, total, updateAmountRequest, removeFromCart }) {
     </Wrapper>
   );
 }
+
+Cart.propTypes = {
+  products: PropTypes.arrayOf(PropTypes.object).isRequired,
+  total: PropTypes.number.isRequired,
+  updateAmountRequest: PropTypes.func.isRequired,
+  removeFromCart: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = state => ({
   products: state.cart.map(product => ({

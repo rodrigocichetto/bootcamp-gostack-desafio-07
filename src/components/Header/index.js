@@ -2,6 +2,7 @@ import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import PropTypes from 'prop-types';
 
 import { Wrapper, Container, Logo, BasketContainer, ItemCount } from './styles';
 
@@ -20,6 +21,11 @@ function Header({ navigation, cartSize }) {
     </Wrapper>
   );
 }
+
+Header.propTypes = {
+  navigation: PropTypes.shape.isRequired,
+  cartSize: PropTypes.number.isRequired,
+};
 
 export default connect(state => ({
   cartSize: state.cart.length,
