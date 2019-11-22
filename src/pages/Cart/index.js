@@ -8,6 +8,7 @@ import { formatPrice } from '../../util/format';
 import colors from '../../styles/colors';
 
 import {
+  Wrapper,
   Container,
   Products,
   Product,
@@ -40,62 +41,64 @@ function Cart({ products, total, updateAmountRequest, removeFromCart }) {
   }
 
   return (
-    <Container>
-      {products.length ? (
-        <>
-          <Products>
-            {products.map(product => (
-              <Product key={product.id}>
-                <ProductInfo>
-                  <ProductImage source={{ uri: product.image }} />
-                  <ProductDetails>
-                    <ProductTitle>{product.title}</ProductTitle>
-                    <ProductPrice>{product.priceFormatted}</ProductPrice>
-                  </ProductDetails>
-                  <ProductDelete onPress={() => removeFromCart(product.id)}>
-                    <Icon
-                      name="delete-forever"
-                      size={24}
-                      color={colors.primary}
-                    />
-                  </ProductDelete>
-                </ProductInfo>
-                <ProductControls>
-                  <ProductControlButton onPress={() => decrement(product)}>
-                    <Icon
-                      name="remove-circle-outline"
-                      size={20}
-                      color={colors.primary}
-                    />
-                  </ProductControlButton>
-                  <ProductAmount value={String(product.amount)} />
-                  <ProductControlButton onPress={() => increment(product)}>
-                    <Icon
-                      name="add-circle-outline"
-                      size={20}
-                      color={colors.primary}
-                    />
-                  </ProductControlButton>
-                  <ProductSubtotal>{product.subtotal}</ProductSubtotal>
-                </ProductControls>
-              </Product>
-            ))}
-          </Products>
-          <TotalContainer>
-            <TotalText>TOTAL</TotalText>
-            <TotalAmount>{formatPrice(total)}</TotalAmount>
-            <Order>
-              <OrderText>FINALIZAR PEDIDO</OrderText>
-            </Order>
-          </TotalContainer>
-        </>
-      ) : (
-        <EmptyContainer>
-          <Icon name="remove-shopping-cart" size={64} color="#eee" />
-          <EmptyText>Seu carrinho está vazio.</EmptyText>
-        </EmptyContainer>
-      )}
-    </Container>
+    <Wrapper>
+      <Container>
+        {products.length ? (
+          <>
+            <Products>
+              {products.map(product => (
+                <Product key={product.id}>
+                  <ProductInfo>
+                    <ProductImage source={{ uri: product.image }} />
+                    <ProductDetails>
+                      <ProductTitle>{product.title}</ProductTitle>
+                      <ProductPrice>{product.priceFormatted}</ProductPrice>
+                    </ProductDetails>
+                    <ProductDelete onPress={() => removeFromCart(product.id)}>
+                      <Icon
+                        name="delete-forever"
+                        size={24}
+                        color={colors.primary}
+                      />
+                    </ProductDelete>
+                  </ProductInfo>
+                  <ProductControls>
+                    <ProductControlButton onPress={() => decrement(product)}>
+                      <Icon
+                        name="remove-circle-outline"
+                        size={20}
+                        color={colors.primary}
+                      />
+                    </ProductControlButton>
+                    <ProductAmount value={String(product.amount)} />
+                    <ProductControlButton onPress={() => increment(product)}>
+                      <Icon
+                        name="add-circle-outline"
+                        size={20}
+                        color={colors.primary}
+                      />
+                    </ProductControlButton>
+                    <ProductSubtotal>{product.subtotal}</ProductSubtotal>
+                  </ProductControls>
+                </Product>
+              ))}
+            </Products>
+            <TotalContainer>
+              <TotalText>TOTAL</TotalText>
+              <TotalAmount>{formatPrice(total)}</TotalAmount>
+              <Order>
+                <OrderText>FINALIZAR PEDIDO</OrderText>
+              </Order>
+            </TotalContainer>
+          </>
+        ) : (
+          <EmptyContainer>
+            <Icon name="remove-shopping-cart" size={64} color="#eee" />
+            <EmptyText>Seu carrinho está vazio.</EmptyText>
+          </EmptyContainer>
+        )}
+      </Container>
+    </Wrapper>
   );
 }
 

@@ -9,6 +9,7 @@ import logo from '../../assets/logo.png';
 export const Wrapper = styled.SafeAreaView`
   flex: 0;
   flex-direction: row;
+  background: ${darken(0.3, colors.dark)};
 `;
 
 export const Logo = styled.Image.attrs({
@@ -24,7 +25,6 @@ export const Container = styled.View`
   flex-direction: row;
   justify-content: space-between;
   padding: 20px;
-  background: ${darken(0.3, colors.dark)};
   min-height: 65px;
 `;
 

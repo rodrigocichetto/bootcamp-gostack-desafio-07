@@ -2,6 +2,11 @@ import styled from 'styled-components/native';
 
 import colors from '../../styles/colors';
 
+export const Wrapper = styled.SafeAreaView`
+  flex: 1;
+  background: ${colors.dark};
+`;
+
 export const Container = styled.View`
   padding: 10px;
   background: #fff;

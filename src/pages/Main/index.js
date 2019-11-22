@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, View } from 'react-native';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -70,13 +70,15 @@ class Main extends React.Component {
     const { products } = this.state;
     return (
       <Container>
-        <FlatList
-          horizontal
-          data={products}
-          extraData={this.props}
-          keyExtractor={item => String(item.id)}
-          renderItem={this.renderProduct}
-        />
+        <View>
+          <FlatList
+            horizontal
+            data={products}
+            extraData={this.props}
+            keyExtractor={item => String(item.id)}
+            renderItem={this.renderProduct}
+          />
+        </View>
       </Container>
     );
   }

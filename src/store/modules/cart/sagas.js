@@ -4,6 +4,7 @@ import { call, select, put, all, takeLatest } from 'redux-saga/effects';
 import api from '../../../services/api';
 import { formatPrice } from '../../../util/format';
 import { addToCartSuccess, updateAmountSuccess } from './actions';
+import NavigationService from '../../../services/navigation';
 
 function* addToCart({ id }) {
   const productExists = yield select(state =>
@@ -34,6 +35,8 @@ function* addToCart({ id }) {
     };
 
     yield put(addToCartSuccess(data));
+
+    NavigationService.navigate('Cart');
   }
 }
 
@@ -43,7 +46,7 @@ function* updateAmount({ id, amount }) {
   const stock = yield call(api.get, `/stock/${id}`);
   const stockAmount = stock.data.amount;
 
-  if (amount >= stockAmount) {
+  if (amount > stockAmount) {
     Alert.alert('Quantidade solicitada fora de estoque');
     return;
   }

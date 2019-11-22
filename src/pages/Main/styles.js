@@ -3,8 +3,9 @@ import { darken } from 'polished';
 
 import colors from '../../styles/colors';
 
-export const Container = styled.View`
+export const Container = styled.SafeAreaView`
   background: ${colors.dark};
+  flex: 1;
 `;
 
 export const Product = styled.View`
