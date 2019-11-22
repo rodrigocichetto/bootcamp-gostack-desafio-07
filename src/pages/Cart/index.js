@@ -83,7 +83,7 @@ function Cart({ products, total, updateAmountRequest, removeFromCart }) {
           </Products>
           <TotalContainer>
             <TotalText>TOTAL</TotalText>
-            <TotalAmount>{total}</TotalAmount>
+            <TotalAmount>{formatPrice(total)}</TotalAmount>
             <Order>
               <OrderText>FINALIZAR PEDIDO</OrderText>
             </Order>
